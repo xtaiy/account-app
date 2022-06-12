@@ -1,7 +1,7 @@
 <template>
   <div class="nav-wrapper">
     <div class="content">
-      <slot></slot>
+        <slot></slot>
     </div>
     <Nav></Nav>
   </div>
