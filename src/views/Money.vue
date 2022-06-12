@@ -1,7 +1,7 @@
 <template>
   <div>
     <Layout class="layout">
-      <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
+      <NumberPad :value.sync="record.amount" @submit="saveRecord" @change="onUpdateCreatedAt"/>
       <Types :value.sync=record.type :data-source="recordTypeList"/>
       <FormItem @update:value="onUpdateNotes" field-name="备注" placeholder="在这里输入备注"/>
       <Tags @update:tags="onUpdateTags"/>
@@ -46,6 +46,9 @@ export default class Money extends Vue {
     window.alert('已保存');
     this.record.notes='';
   }
+    onUpdateCreatedAt(value:string){
+    this.record.createdAt=value;
+  }
 }
 </script>
 
@@ -54,7 +57,6 @@ export default class Money extends Vue {
   .content{
     display: flex;
     flex-direction: column-reverse;
-
   }
 }
 </style>

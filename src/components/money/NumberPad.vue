@@ -2,21 +2,21 @@
   <div class="numberPad">
     <div class="output">{{output}}</div>
     <div class="buttons">
-      <button @click="inputContent">1</button>
-      <button @click="inputContent">2</button>
-      <button @click="inputContent">3</button>
-      <button @click="remove">删除</button>
-      <button @click="inputContent">4</button>
-      <button @click="inputContent">5</button>
-      <button @click="inputContent">6</button>
-      <button @click="clear">清空</button>
-      <button @click="inputContent">7</button>
-      <button @click="inputContent">8</button>
-      <button @click="inputContent">9</button>
-      <button>日历</button>
-      <button @click="inputContent" class="zero">0</button>
-      <button @click="inputContent">.</button>
-      <button @click="ok" class="ok">完成</button>
+      <button @click="inputContent" class="button-item">1</button>
+      <button @click="inputContent" class="button-item">2</button>
+      <button @click="inputContent" class="button-item">3</button>
+      <button @click="remove" class="button-item">删除</button>
+      <button @click="inputContent" class="button-item">4</button>
+      <button @click="inputContent" class="button-item">5</button>
+      <button @click="inputContent" class="button-item">6</button>
+      <button @click="clear" class="button-item">清空</button>
+      <button @click="inputContent" class="button-item">7</button>
+      <button @click="inputContent" class="button-item">8</button>
+      <button @click="inputContent" class="button-item">9</button>
+      <DatePicker class="button-item" @update:change ="dateSelected"></DatePicker>
+      <button @click="inputContent" class="zero button-item">0</button>
+      <button @click="inputContent" class="button-item">.</button>
+      <button @click="ok" class="ok button-item">完成</button>
     </div>
   </div>
 </template>
@@ -24,8 +24,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
-
-@Component
+import DatePicker from '@/components/DatePicker.vue';
+@Component({
+  components: {DatePicker}
+})
 export default class NumberPad extends Vue {
   @Prop(Number) value!:number;
   output=this.value.toString();
@@ -63,10 +65,14 @@ export default class NumberPad extends Vue {
     this.$emit('submit')
     this.output = '0';
   }
+  dateSelected(value:string) {
+    this.$emit('change',value)
+  }
 }
 </script>
 
 <style scoped lang="scss">
+
 .numberPad{
   display: flex;
   flex-direction: column;
@@ -82,11 +88,12 @@ export default class NumberPad extends Vue {
   > .buttons{
     display: flex;
     flex-wrap: wrap;
-    >button{
+    >.button-item{
       width: 25%;
       height: 64px;
       background:transparent;
       border: none;
+
       &.ok{
         flex-grow: 1;
       }
