@@ -14,6 +14,16 @@ body{
   color: #333;
   background-color: #f5f5f5;
 }
+@media screen and (min-width: 500px){
+  .el-picker-panel {
+    left: 312px !important;
+    > .popper__arrow{
+      left:215px !important;
+    }
+  }
+
+}
+
 #app{
   max-width: 500px;
   margin:0 auto;

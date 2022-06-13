@@ -50,7 +50,6 @@ export default class Statistics extends Vue {
         const found=_.find(this.groupedList,{
           title:date
         })
-
         array.push({date,value:found?found.total:0});
       }
       const keys=array.map(item=>item.date).reverse();
