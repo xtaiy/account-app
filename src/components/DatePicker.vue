@@ -10,11 +10,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
+import dayjs from 'dayjs';
 
 @Component
 export default class DatePicker extends Vue {
   select(value:Date){
-    this.$emit('update:change',value.toISOString())
+    console.log('1')
+    this.$emit('update:change',dayjs(value).format('YYYY-MM-DD'))
   }
   value1='';
   value2='';

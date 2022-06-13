@@ -9,6 +9,8 @@ import Icon from '@/components/Icon.vue';
 import { MessageBox ,Message,DatePicker} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+
+
 Vue.config.productionTip = false;
 Vue.component('Nav', Nav);
 Vue.component('Layout', Layout);

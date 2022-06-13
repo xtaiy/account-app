@@ -47,7 +47,7 @@ export default class Money extends Vue {
     this.record.notes='';
   }
     onUpdateCreatedAt(value:string){
-    this.record.createdAt=value;
+      this.record.createdAt=value.split('T')[0];
   }
 }
 </script>
