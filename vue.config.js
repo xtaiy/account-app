@@ -1,6 +1,9 @@
 const path = require('path')//引入一个path模块
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+      ? '/account-app-website/'
+      : '/',
   lintOnSave: false,
   chainWebpack: config => {
     const dir = path.resolve(__dirname, 'src/assets/icons')

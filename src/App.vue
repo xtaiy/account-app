@@ -16,14 +16,18 @@ body{
 }
 @media screen and (min-width: 500px){
   .el-picker-panel {
-    left: 312px !important;
+    left: calc(50% - 70px) !important;
     > .popper__arrow{
       left:215px !important;
     }
   }
 
 }
-
+@media screen and (max-width: 500px) {
+  .el-message-box{
+    width: 85% !important;
+  }
+}
 #app{
   max-width: 500px;
   margin:0 auto;
